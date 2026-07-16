@@ -1,0 +1,26 @@
+name: Build Debian Image
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Install debootstrap
+        run: sudo apt-get update && sudo apt-get install -y debootstrap
+      
+      - name: Build debian.ext3
+        run: sudo bash MakeImage.sh
+      
+      - name: Upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: debian-kindle
+          path: |
+            debian.ext3
+            RunBeforeDebian.sh
+            RunDebian.sh
+            UpdateInitScript.sh
