@@ -18,11 +18,12 @@ jobs:
       - name: Build debian.ext3
         run: sudo bash MakeImage.sh
 
-      - name: Upload
-        uses: actions/upload-artifact@v4
+      - name: Upload to Release
+        uses: softprops/action-gh-release@v2
         with:
-          name: debian-kindle
-          path: |
+          tag_name: v1.0
+          name: Debian for Kindle K3
+          files: |
             debian.ext3
             RunBeforeDebian.sh
             RunDebian.sh
