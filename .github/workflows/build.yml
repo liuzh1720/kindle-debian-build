@@ -10,10 +10,10 @@ jobs:
       - uses: actions/checkout@v4
       
       - name: Install debootstrap
-        run: sudo apt-get update && sudo apt-get install -y debootstrap
+        run: apt-get update && apt-get install -y debootstrap
       
       - name: Build debian.ext3
-        run: sudo bash MakeImage.sh
+        run: bash MakeImage.sh
       
       - name: Upload
         uses: actions/upload-artifact@v4
