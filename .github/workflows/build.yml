@@ -10,7 +10,7 @@ jobs:
       - uses: actions/checkout@v4
       
       - name: Install deps
-        run: apt-get update && apt-get install -y debootstrap sudo
+        run: apt-get update && apt-get install -y debootstrap e2fsprogs
 
       - name: Build debian.ext3
         run: bash MakeImage.sh
