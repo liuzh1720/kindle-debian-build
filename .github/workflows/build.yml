@@ -9,9 +9,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       
-      - name: Install debootstrap
-        run: apt-get update && apt-get install -y debootstrap
-      
+      - name: Install deps
+        run: apt-get update && apt-get install -y debootstrap sudo
+
       - name: Build debian.ext3
         run: bash MakeImage.sh
       
