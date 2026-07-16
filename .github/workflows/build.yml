@@ -8,13 +8,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Install deps
-        run: apt-get update && apt-get install -y debootstrap e2fsprogs
+        run: |
+          sudo rm -f /var/lib/apt/lists/lock
+          sudo apt-get update
+          sudo apt-get install -y debootstrap e2fsprogs
 
       - name: Build debian.ext3
-        run: bash MakeImage.sh
-      
+        run: sudo bash MakeImage.sh
+
       - name: Upload
         uses: actions/upload-artifact@v4
         with:
